@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://kit.fontawesome.com/551f3a8159.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+ <header　class="shadow-sm">
+    <nav class= "navbar navbar-expand-lg navbar-dark bg-dark ">
+      <div class="container">
+        <a class="navbar-brand" href="/">Bookers</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-lavel="Togglenacigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in?%>
+              <li class="navbar-item"><%= link_to user_path(current_user.id),class: "nav-link text-light" do %><i class="fas fa-home fa-w-18"></i>Home<%end%></li>
+              <li class="navbar-item"><%= link_to(users_path,class: "nav-link text-light")do %><i class="fas fa-users fa-w-20"></i>Users<%end%></li>
+              <li class="navbar-item"><%= link_to(books_path,class: "nav-link text-light")do %><i class="fas fa-book-open fa-w-18"></i>Books<%end%></li>
+              <li class="navbar-item"><%= link_to destroy_user_session_path ,class: "nav-link text-light", method: :delete do %><i class="fas fa-sign-out-alt"></i>Log out<%end%></li>
+            <%else%>
+              <li class="navbar-item"> <a class="nav-link text-light" href="/"><i class="fas fa-home fa-w-18"></i>Home </li></a>
+              <li class="navbar-item"> <a class="nav-link text-light" href= /home/about><i class="fas fa-link fa-w-16"></i>About</li></a>
+              <li class="navbar-item"> <a class="nav-link text-light" href= /users/sign_up><i class="fas fa-user-plus fa-w-20"></i>Sign up</li></a>
+              <li class="navbar-item"> <a class="nav-link text-light" href= /users/sign_in><i class="fas fa-sign-in-alt fa-w-16"></i>Log in</li></a>
+            <%end%>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<main>
+  <p id="notice">
+    <% flash.each do |key, value| %>
+      <%= value%>
+    <% end %>
+  </p>
+  <% if @book_new.errors.any?%>
+    <div>
+	     <h2><%=@book_new.errors.count%>errors prohibited this book from begin save:</h2>
+	     <ul>
+	      <%@book_new.errors.full_messages.each do |message|%>
+	        <li><%= message%></li>
+	      <%end%>
+	     </ul>
+    </div>
+  <%end%>
+  <%= yield %>
+</main>
+  <footer>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="mx-auto">
+          <p>CopyRight Inftatop.inc</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>
