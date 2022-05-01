@@ -13,8 +13,8 @@
         </tr>
       </tbody>
     </table>
-      <%= link_to edit_user_path(displaying_user.id),class: "btn btn-block border-secondary  text-dark " do%>
-        <i class="fas fa-user-cog fa-w-20 text-secondary"></i>
+      <%= link_to edit_user_path(displaying_user.id),class: "btn btn-block btn-outline-secondary " do%>
+        <i class="fas fa-user-cog fa-w-20 "></i>
       <%end%>
     <h2 class="mt-3">New book</h2>
     <%= form_with model: @book_new, url: books_path do |book| %>
