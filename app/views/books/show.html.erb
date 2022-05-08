@@ -27,7 +27,7 @@
 					<%end%>
 					<%=book_comment.comment%>
 					<%if book_comment.user_id == current_user.id%>
-						<%=link_to "Destroy",book_book_comment_path(book_comment.id),method: :delete,class: "btn btn-sm bg-danger text-light" %>
+						<%=link_to "Destroy",book_book_comment_path(book_comment.book_id,book_comment.id),method: :delete,class: "btn btn-sm bg-danger text-light" %>
 					<%end%>
 					<br>
 					<%= link_to user_path(book_comment.user.id)do%>
@@ -37,7 +37,7 @@
 				<%end%>
 				<%=form_with(model: [@book,@comment])  do |comment| %>
 					<%=comment.text_area :comment , class: 'form-control', size: "20x10"%>
-					<%=comment.submit "Send"%>
+					<%=comment.submit "送信"%>
 				<%end%>
 			</div>
 		</div>
