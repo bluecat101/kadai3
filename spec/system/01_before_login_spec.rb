@@ -87,7 +87,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'sign upを押すと、新規登録画面に遷移する' do
         signup_link = find_all('a')[3].native.inner_text
         signup_link = signup_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link signup_link
+        click_link signup_link, match: :first
         is_expected.to eq '/users/sign_up'
       end
       it 'loginを押すと、ログイン画面に遷移する' do
