@@ -75,7 +75,7 @@ Userモデルのテスト
     リンクの内容を確認
 [32m      Homeを押すと、トップ画面に遷移する[0m
 [32m      Aboutを押すと、アバウト画面に遷移する[0m
-[32m      sign upを押すと、新規登録画面に遷移する[0m
+[31m      sign upを押すと、新規登録画面に遷移する (FAILED - 1)[0m
 [32m      loginを押すと、ログイン画面に遷移する[0m
   ユーザ新規登録のテスト
     表示内容の確認
@@ -195,7 +195,7 @@ Userモデルのテスト
 [32m      URLが正しい[0m
 [32m      投稿一覧のユーザ画像のリンク先が正しい[0m
 [32m      投稿一覧に自分の投稿のtitleが表示され、リンクが正しい[0m
-[32m      投稿一覧に自分の投稿のopinionが表示される[0m
+[31m      投稿一覧に自分の投稿のopinionが表示される (FAILED - 2)[0m
 [32m      他人の投稿は表示されない[0m
     サイドバーの確認
 [32m      自分の名前と紹介文が表示される[0m
@@ -358,6 +358,51 @@ Userモデルのテスト
 [32m      リダイレクト先が自分のユーザ詳細画面になっている[0m
 [32m      リダイレクト先でいいね数が正しく更新されている[0m
 
-Finished in 50.93 seconds (files took 1.08 seconds to load)
-[32m243 examples, 0 failures[0m
+Failures:
+
+  1) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 sign upを押すと、新規登録画面に遷移する
+     [31mFailure/Error: click_link signup_link[0m
+     [31m[0m
+     [31mCapybara::Ambiguous:[0m
+     [31m  Ambiguous match, found 2 elements matching visible link "Sign up"[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.36.0/lib/capybara/node/finders.rb:301:in `block in synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.36.0/lib/capybara/node/base.rb:83:in `synchronize'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.36.0/lib/capybara/node/finders.rb:292:in `synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.36.0/lib/capybara/node/finders.rb:53:in `find'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.36.0/lib/capybara/node/actions.rb:42:in `click_link'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.36.0/lib/capybara/session.rb:778:in `block (2 levels) in <class:Session>'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.36.0/lib/capybara/dsl.rb:58:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/system/01_before_login_spec.rb:90:in `block (4 levels) in <main>'[0m
+
+  2) [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト 表示の確認 投稿一覧に自分の投稿のopinionが表示される
+     [31mFailure/Error: let!(:other_user) { create(:user) }[0m
+     [31m[0m
+     [31mActiveRecord::StatementInvalid:[0m
+     [31m  SQLite3::BusyException: database is locked[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sqlite3-1.4.2/lib/sqlite3/statement.rb:108:in `step'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sqlite3-1.4.2/lib/sqlite3/statement.rb:108:in `block in each'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sqlite3-1.4.2/lib/sqlite3/statement.rb:107:in `loop'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sqlite3-1.4.2/lib/sqlite3/statement.rb:107:in `each'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.1/lib/factory_bot/evaluation.rb:18:in `create'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.1/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.1/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.1/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.1/lib/factory_bot/factory.rb:43:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.1/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.1/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.1/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+     [36m# ./spec/system/02_after_login_spec.rb:5:in `block (2 levels) in <main>'[0m
+     [36m# ------------------[0m
+     [36m# --- Caused by: ---[0m
+     [36m# SQLite3::BusyException:[0m
+     [36m#   database is locked[0m
+     [36m#   /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sqlite3-1.4.2/lib/sqlite3/statement.rb:108:in `step'[0m
+
+Finished in 44.28 seconds (files took 0.98364 seconds to load)
+[31m243 examples, 2 failures[0m
+
+Failed examples:
+
+[31mrspec ./spec/system/01_before_login_spec.rb:87[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 sign upを押すと、新規登録画面に遷移する[0m
+[31mrspec ./spec/system/02_after_login_spec.rb:314[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト 表示の確認 投稿一覧に自分の投稿のopinionが表示される[0m
 

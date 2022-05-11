@@ -29,7 +29,8 @@
             <%else%>
               <li class="navbar-item"> <a class="nav-link text-light" href="/"><i class="fas fa-home fa-w-18"></i>Home </li></a>
               <li class="navbar-item"> <a class="nav-link text-light" href= /home/about><i class="fas fa-link fa-w-16"></i>About</li></a>
-              <li class="navbar-item"> <a class="nav-link text-light" href= /users/sign_up><i class="fas fa-user-plus fa-w-20"></i>Sign up</li></a>
+              <!--<li class="navbar-item"> <a class="nav-link text-light" href= /users/sign_up><i class="fas fa-user-plus fa-w-20"></i></li></a>-->
+              <li class="navbar-item"><%= link_to new_user_registration_path ,class: "nav-link text-light" do %><i class="fas fa-user-plus fa-w-20"></i>sign up<%end%></li>
               <li class="navbar-item"> <a class="nav-link text-light" href= /users/sign_in><i class="fas fa-sign-in-alt fa-w-16"></i>login</li></a>
             <%end%>
           </ul>
